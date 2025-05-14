@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+:root {
+	--txt-color: #f5d8a2;
+	--bg-color: #0e0548
+}
+
+body {
+	background-color: var(--bg-color);
+	background-image: url("https://i.pinimg.com/originals/b5/08/2d/b5082d6fca76e676ac167fd76768f336.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-blend-mode: exclusion;
+}
+
+main {
+	color: var(--txt-color)
+}
+
+@media (prefers-color-scheme: dark){
+	body {
+		background-blend-mode: multiply;
+	}
+}
