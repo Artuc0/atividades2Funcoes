@@ -8,9 +8,11 @@ sobre cada elemento do array e retornar a soma de todos os números. */
 
 const resultado = document.querySelector("#somaResult");
 const filtro = document.querySelector("#pares");
-const maiorNum = document.querySelector("#maior")
+const maiorNume = document.querySelector("#maiorNu")
 
 const btnSomar = document.querySelector("#btnSoma");
+const btnFiltrar = document.querySelector("#btnFiltro")
+const btnMaior = document.querySelector("#btnMaior")
 
 function somaArray(array){
     let soma = 0
@@ -47,23 +49,38 @@ function filtrarNumerosPares(array){
     filtro.innerHTML = numPares
 }
 
-filtrarNumerosPares(teste1) //Array(4) [ 12, 20, 42, 10 ]
-filtrarNumerosPares(teste2) //Array []
+btnFiltrar.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    const arrayFiltro = document.getElementById("filtrar").value;
+    const valoresFiltro = arrayFiltro.split(",").map(item => Number(item.trim()))
+
+    filtrarNumerosPares(valoresFiltro)
+})
 
 /*Objetivo: Praticar a criação de funções, o uso de loops e a lógica condicional para encontrar um valor específico em um array. "COM FUNÇÕES"
 Descrição: Crie uma função chamada encontrarMaiorNumero que recebe um array de números como argumento. 
 A função deve iterar sobre o array e retornar o maior número encontrado. Se o array estiver vazio, a função deve retornar undefined. */
 
 function encontrarMaiorNumero(array){
-    let maior = array[0]
+    let maiorN = array[0]
     for(let i in array){
-        if (array[i] > maior){
-            maior = array[i]
+        if (array[i] > maiorN){
+            maiorN = array[i]
         }
     }
-    console.log(maior);
-    maiorNum.innerHTML = maior
+    console.log(maiorN);
+    maiorNume.innerHTML = maiorN
 }
+
+btnMaior.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    const arrayMaior = document.getElementById("maior").value
+    const valoresMaior = arrayMaior.split(",").map(item => Number(item.trim()))
+
+    encontrarMaiorNumero(valoresMaior)
+})
 
 encontrarMaiorNumero(teste3) //undefined
 encontrarMaiorNumero(teste1) //45
