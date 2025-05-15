@@ -1,3 +1,7 @@
+const teste1 = [12, 3, 20, 42, 45, 10]
+const teste2 = [3, 5, 7, 13, 2467]
+const teste3 = []
+
 /*Objetivo: Praticar o uso de loops para iterar sobre um array e realizar uma operação simples "COM FUNÇÕES".
 Descrição: Crie uma função chamada somaArray que recebe um array de números como argumento. A função deve iterar 
 sobre cada elemento do array e retornar a soma de todos os números. */
@@ -5,6 +9,8 @@ sobre cada elemento do array e retornar a soma de todos os números. */
 const resultado = document.querySelector("#somaResult");
 const filtro = document.querySelector("#pares");
 const maiorNum = document.querySelector("#maior")
+
+const btnSomar = document.querySelector("#btnSoma");
 
 function somaArray(array){
     let soma = 0
@@ -15,8 +21,14 @@ function somaArray(array){
     resultado.innerHTML = soma;
 };
 
-teste1 = [12, 3, 20, 42, 45, 10]
-somaArray(teste1) //132
+btnSomar.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    const arraySoma = document.getElementById("somar").value;
+    const valoresSoma = arraySoma.split(",").map(item => Number(item.trim()))
+
+    somaArray(valoresSoma)
+})
 
 /*Objetivo: Praticar a criação de funções, o uso de loops, a lógica condicional e a manipulação de arrays 
 (criando um novo array). "COM FUNÇÕES"
@@ -35,7 +47,6 @@ function filtrarNumerosPares(array){
     filtro.innerHTML = numPares
 }
 
-teste2 = [3, 5, 7, 13, 2467]
 filtrarNumerosPares(teste1) //Array(4) [ 12, 20, 42, 10 ]
 filtrarNumerosPares(teste2) //Array []
 
@@ -54,7 +65,6 @@ function encontrarMaiorNumero(array){
     maiorNum.innerHTML = maior
 }
 
-teste3 = []
 encontrarMaiorNumero(teste3) //undefined
 encontrarMaiorNumero(teste1) //45
 

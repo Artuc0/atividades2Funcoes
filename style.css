@@ -20,7 +20,12 @@ body {
 }
 
 main {
-	color: var(--txt-color)
+	color: var(--txt-color);
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	align-content: space-around;
 }
 
 @media (prefers-color-scheme: dark){
