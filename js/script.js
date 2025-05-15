@@ -28,7 +28,7 @@ function filtrarNumerosPares(array){
     let numPares = []
     for (let i in array){
         if (array[i] % 2 == 0){
-            numPares .push(array[i])
+            numPares.push(array[i])
         }
     }
     console.log(numPares);
@@ -67,7 +67,12 @@ atender a pessoa, e como bônus podem incluir uma função desistir da fila onde
 e remover o item. */
 
 function pegarFila(fila, num){
-    
+    if (num >= 65){
+        fila.unshift(num);
+    } else {
+        fila.push(num)
+    }
+    mostrarFila(fila)
 }
 
 function mostrarFila(fila){
@@ -83,3 +88,6 @@ function desistirFila(fila, num){
     fila.splice(num, 1);
     console.log(fila);
 }
+
+pegarFila(teste1, 47)
+pegarFila(teste1, 87)
