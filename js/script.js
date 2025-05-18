@@ -1,35 +1,44 @@
-const teste1 = [12, 3, 20, 42, 45, 10]
+const teste1 = [12, 3, 20, 42, 45, 10] //essas constantes serão excluidas assim que o código ficar interativo.
 const teste2 = [3, 5, 7, 13, 2467]
 const teste3 = []
+
+const resultado = document.querySelector("#somaResult"); //campos de exibição de resultados no HTML
+const filtro = document.querySelector("#pares");
+const maiorNume = document.querySelector("#maiorNu")
+
+//constantes de botões abaixo
+const btnSomar = document.querySelector("#btnSoma"); 
+const btnFiltrar = document.querySelector("#btnFiltro")
+const btnMaior = document.querySelector("#btnMaior")
+
+//As constantes a seguir são para o exercicio 4, que simula uma fila com números
+const showFila = document.querySelector("#filaAqui")
+
+//botões abaixo
+const btnPegarFila = document.querySelector("#btnPegarFila")
+const btnAtender = document.querySelector("#btnAtender")
+const btnDesistir = document.querySelector("#btnDesistir")
 
 /*Objetivo: Praticar o uso de loops para iterar sobre um array e realizar uma operação simples "COM FUNÇÕES".
 Descrição: Crie uma função chamada somaArray que recebe um array de números como argumento. A função deve iterar 
 sobre cada elemento do array e retornar a soma de todos os números. */
 
-const resultado = document.querySelector("#somaResult");
-const filtro = document.querySelector("#pares");
-const maiorNume = document.querySelector("#maiorNu")
-
-const btnSomar = document.querySelector("#btnSoma");
-const btnFiltrar = document.querySelector("#btnFiltro")
-const btnMaior = document.querySelector("#btnMaior")
-
 function somaArray(array){
-    let soma = 0
-    for (let i in array) {
-        soma += array[i]
+    let soma = 0 //declaração de variável para armazenar a soma solicitada
+    for (let i in array) { //para cada item na array recebida como argumento:
+        soma += array[i]   //soma dito item na variável soma.
     }
     console.log(soma); //<- para verificar se a função funciona corretamente    
-    resultado.innerHTML = soma;
+    resultado.innerHTML = soma; //exibe o resultado na página
 };
 
-btnSomar.addEventListener("click", (e)=>{
+btnSomar.addEventListener("click", (e)=>{ //funcionalidade para o devido botão da função
     e.preventDefault()
 
-    const arraySoma = document.getElementById("somar").value;
-    const valoresSoma = arraySoma.split(",").map(item => Number(item.trim()))
+    const arraySoma = document.getElementById("somar").value; //pega o valor da array inserida
+    const valoresSoma = arraySoma.split(",").map(item => Number(item.trim())) //converte o valor para uma array de números com a ajuda do método de mapa; separa cada item a partir da vírgula
 
-    somaArray(valoresSoma)
+    somaArray(valoresSoma) //executa a função criada
 })
 
 /*Objetivo: Praticar a criação de funções, o uso de loops, a lógica condicional e a manipulação de arrays 
@@ -82,9 +91,6 @@ btnMaior.addEventListener("click", (e)=>{
     encontrarMaiorNumero(valoresMaior)
 })
 
-encontrarMaiorNumero(teste3) //undefined
-encontrarMaiorNumero(teste1) //45
-
 /*Objetivo: Praticar a criação de funções e a lógica condicional para adicionar e remover itens específicos em um array. "COM FUNÇÕES"
 Descrição: Crie duas funções, uma chamada pegar fila, e outra mostrar fila e outra atender pessoa.
 No programa vocês precisam criar um array que irá representar a fila e uma das funções ao ser chamada deve adicionar um número no array , 
@@ -92,6 +98,11 @@ mas dentro dessa função deve haver um condicional para verificar o número cas
 e essa função deve chamar a função mostrar fila assim que ela adicionar no array, a outra função deve remover um item do início do array para 
 atender a pessoa, e como bônus podem incluir uma função desistir da fila onde essa outra função bônus receberá o número (posição da fila) 
 e remover o item. */
+
+function mostrarFila(fila){
+    console.log(fila);
+    showFila.innerHTML = fila
+}
 
 function pegarFila(fila, num){
     if (num >= 65){
@@ -102,19 +113,34 @@ function pegarFila(fila, num){
     mostrarFila(fila)
 }
 
-function mostrarFila(fila){
-    console.log(fila);
-}
-
 function atenderPessoa(fila){
     fila.shift();
-    console.log(fila);
+    mostrarFila(fila)
 }
 
 function desistirFila(fila, num){
     fila.splice(num, 1);
-    console.log(fila);
+    mostrarFila(fila)
 }
+
+btnPegarFila.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    const arrayFila = document.getElementById("fila").value
+    pegarFila()
+})
+
+btnAtender.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    atenderPessoa()
+})
+
+btnDesistir.addEventListener("click", (e)=>{
+    e.preventDefault()
+
+    desistirFila()
+})
 
 pegarFila(teste1, 47)
 pegarFila(teste1, 87)

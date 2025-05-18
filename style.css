@@ -27,14 +27,15 @@ main {
 	justify-content: center;
 	align-content: space-around;
 	text-align: center;
+	font-family: Outfit;
 }
 
 div {
 	margin: 2rem;
 }
 
-@media (prefers-color-scheme: dark){
+/* @media (prefers-color-scheme: dark){
 	body {
 		background-blend-mode: multiply;
 	}
-}
+} */
